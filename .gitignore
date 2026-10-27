@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Tư liệu trung gian khi dựng báo cáo (bản render, ảnh QA từng trang)
+reports/build/
+
+# Môi trường và tệp tạm
+.vscode/
+.idea/
+*.tmp
+_tmp_*/

@@ -1,0 +1,32 @@
+@startuml hinh_2_1_vong_doi_dinh
+' Vòng đời trạng thái của một đỉnh (ô) trong A* — chỉ thang độ xám
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontName "DejaVu Sans"
+skinparam linetype ortho
+skinparam nodesep 30
+skinparam ranksep 40
+skinparam state {
+  BackgroundColor White
+  BorderColor Black
+  FontSize 13
+}
+skinparam arrow {
+  Color Black
+  FontSize 12
+}
+hide empty description
+
+[*] --> ChuaBiet : khởi tạo
+state "CHƯA BIẾT\ng(n) = ∞" as ChuaBiet
+state "TRONG TẬP MỞ (OPEN)\nchờ xét" as Mo
+state "ĐÃ DUYỆT (CLOSED)\ng(n) đã chốt" as Dong
+state "TÌM THẤY ĐÍCH" as Dung
+
+ChuaBiet --> Mo : sinh lân cận
+Mo --> Mo : cập nhật g(n) tốt hơn
+Mo --> Dong : lấy f(n) nhỏ nhất
+Dong --> Mo : mở lại
+Dong --> Dung : là đích
+Dung --> [*]
+@enduml

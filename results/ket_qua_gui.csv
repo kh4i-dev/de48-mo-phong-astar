@@ -1,0 +1,6 @@
+﻿ban_do;45x29;S=(1, 1);G=(27, 43);8_huong=0
+thuat_toan_thuc;thuat_toan;heuristic;trong_so_w;8_huong;tim_thay;chi_phi_duong_di;so_o_tren_duong;so_buoc;so_dinh_duyet;so_dinh_sinh;so_lan_cap_nhat_g;so_lan_mo_lai;open_lon_nhat;do_sau_lon_nhat;thoi_gian_ms
+Chi phi THUC;A*;-;1.0;0;1;68.0;69;68;1301;1303;1302;0;30;68;5.0836
+Chi phi THUC;UCS (Dijkstra);-;1.0;0;1;68.0;69;68;1301;1303;1302;0;30;68;3.6599
+Chi phi THUC;Greedy Best-First;manhattan;1.0;0;1;68.0;69;68;69;205;204;0;136;68;0.3529
+Chi phi THUC;BFS;-;1.0;0;1;68.0;69;68;1301;1303;0;0;30;68;1.9721

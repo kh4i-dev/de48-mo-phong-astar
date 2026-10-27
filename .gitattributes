@@ -1,0 +1,6 @@
+# Chuẩn hoá xuống dòng: giữ LF trong repo, không đổi trên Windows
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.pdf binary
+*.docx binary

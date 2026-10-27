@@ -1,0 +1,28 @@
+@startuml hinh_3_1_kien_truc_module
+' Sơ đồ kiến trúc phân tầng của chương trình — chỉ thang độ xám
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontName "DejaVu Sans"
+skinparam nodesep 12
+skinparam ranksep 22
+skinparam package {
+  BackgroundColor White
+  BorderColor Black
+  FontSize 13
+}
+skinparam arrow {
+  Color Black
+  FontSize 11
+}
+hide stereotype
+
+package "Tầng trình bày (Presentation)\ngui.py — giao diện Tkinter, vẽ lưới, tô màu tập OPEN/CLOSED" as P1
+
+package "Tầng xử lý (Business Logic)\nsearch.py, grid.py, heuristics.py, maps.py — thư viện astar" as P2
+
+package "Tầng dữ liệu và kiểm chứng\nbộ dữ liệu mẫu dạng lưới, tests/test_astar.py, experiments.py" as P3
+
+P1 --> P2 : gọi từng bước\ntheo sự kiện
+P2 --> P3 : đọc dữ liệu lưới,\ngiữ nguyên toạ độ ô
+P3 ..> P1 : kết quả đo đạc\n(CSV, báo cáo)
+@enduml

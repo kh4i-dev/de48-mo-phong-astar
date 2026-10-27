@@ -1,0 +1,34 @@
+@startuml hinh_3_3_luu_do_mo_phong
+' Trình tự mô phỏng từng bước giữa giao diện và bộ máy tìm kiếm
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontName "DejaVu Sans"
+skinparam sequence {
+  ArrowColor Black
+  LifeLineBorderColor Black
+  ParticipantBorderColor Black
+  ParticipantBackgroundColor White
+  FontSize 13
+}
+skinparam maxMessageSize 210
+
+actor "Người dùng" as U
+participant "gui.py\n(AStarApp)" as G
+participant "search_steps()\ngenerator" as S
+database "Grid\n(lưới + chi phí)" as D
+
+U -> G : bấm nút Chạy
+G -> S : search_steps(lưới, start, goal, mode, h, w)
+activate S
+loop mỗi nhịp
+  G -> S : next()
+  S -> D : neighbors(n)
+  D --> S : đỉnh kề
+  S --> G : expand / frontier
+  G -> G : tô màu
+end
+S --> G : done (SearchResult)
+deactivate S
+G -> G : vẽ đường đi
+G --> U : kết quả
+@enduml

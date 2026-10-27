@@ -1,0 +1,59 @@
+@startuml hinh_3_2_so_do_lop
+' Sơ đồ lớp lõi của thư viện astar — chỉ thang độ xám
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontName "DejaVu Sans"
+skinparam class {
+  BackgroundColor White
+  BorderColor Black
+  ArrowColor Black
+  FontSize 12
+  AttributeFontSize 12
+}
+skinparam nodesep 14
+skinparam ranksep 24
+
+class Grid {
+  - width, height : int
+  - cost : float[][]  (INF = tường)
+  - diagonal : bool
+  + neighbors(node) : (node, cost)[]
+  + weight(node) : float
+  + set_wall(node, blocked)
+  + min_step_cost : float
+}
+
+class SearchResult {
+  + algorithm, heuristic : str
+  + found : bool
+  + path : node[]
+  + cost : float
+  + expanded, generated : int
+  + max_open, max_depth : int
+  + time_ms : float
+}
+
+class SampleMap {
+  + key, name : str
+  + grid : Grid
+  + start, goal : node
+}
+
+class "Nhóm hàm h(n) tự do" as HFunc {
+  + manhattan(a, b)
+  + euclidean(a, b)
+  + chebyshev(a, b)
+  + octile(a, b)
+}
+
+class "astar_search()\n(generator phát sự kiện)" as ENGINE {
+  + mode : A* | UCS | Greedy | BFS
+  + weight : float (w)
+  + yield expand / frontier / done
+}
+
+Grid o-- SampleMap : chứa
+ENGINE ..> Grid : đọc lân cận
+ENGINE ..> HFunc : tính h(n)
+ENGINE ..> SearchResult : tạo kết quả
+@enduml

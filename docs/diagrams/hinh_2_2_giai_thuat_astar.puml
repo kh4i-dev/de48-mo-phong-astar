@@ -1,0 +1,36 @@
+@startuml hinh_2_2_giai_thuat_astar
+' Lưu đồ thuật toán A* — chỉ thang độ xám (zero-color)
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontName "DejaVu Sans"
+skinparam nodesep 14
+skinparam ranksep 18
+skinparam activity {
+  BackgroundColor White
+  BorderColor Black
+  FontSize 13
+  DiamondBackgroundColor White
+  DiamondBorderColor Black
+}
+
+start
+:Khởi tạo:\nOPEN = {start}, g(start) = 0;
+while (OPEN còn đỉnh?) is (có)
+  :Lấy n có f(n) nhỏ nhất;
+  :Chuyển n sang CLOSED;
+  if (n là đích?) then (đúng)
+    :Truy vết cha về start;
+    :Trả về đường đi, chi phí;
+    stop
+  else (sai)
+    :Sinh đỉnh kề m của n;
+    if (bước mới < g(m)?) then (đúng)
+      :Cập nhật g(m), cha(m);\nđưa m vào OPEN;
+    else (sai)
+      :Bỏ qua m;
+    endif
+  endif
+endwhile (không)
+:OPEN rỗng: vô nghiệm;
+stop
+@enduml
